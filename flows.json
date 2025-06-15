@@ -1,0 +1,1998 @@
+[
+    {
+        "id": "5b2af54329ecc956",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "9025b4ea5f85b1fb",
+        "type": "http in",
+        "z": "5b2af54329ecc956",
+        "name": "",
+        "url": "/create_ac_John",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 80,
+        "wires": [
+            [
+                "6574756e511bb862"
+            ]
+        ]
+    },
+    {
+        "id": "6574756e511bb862",
+        "type": "function",
+        "z": "5b2af54329ecc956",
+        "name": "function 6",
+        "func": "/*jshint multistr: true */\nvar label = msg.payload.year + msg.payload.month + msg.payload.day;\n\nvar data = '<m2m:cin xmlns:m2m=\"http://www.onem2m.org/xml/protocols\">\\\n\t<cnf>message</cnf>\\\n\t<lbl>' + label + '</lbl>\\\n\t<con>\\\n\t  &lt;obj&gt;\\\n\t\t&lt;str name=&quot;year&quot; val=&quot;'+ msg.payload.year + '&quot;/&gt;\\\n\t\t&lt;str name=&quot;month&quot; val=&quot;'+ msg.payload.month+ '&quot;/&gt;\\\n\t\t&lt;str name=&quot;day&quot; val=&quot;'+ msg.payload.day + '&quot;/&gt;\\\n\t\t&lt;str name=&quot;part&quot; val=&quot;'+ msg.payload.part + '&quot;/&gt;\\\n\t\t&lt;str name=&quot;user&quot; val=&quot;'+ msg.payload.user + '&quot;/&gt;\\\n\t  &lt;/obj&gt;\\\n\t</con>\\\n</m2m:cin>';\n\nmsg.payload = data;\nmsg.headers = {};\nmsg.headers['X-M2M-Origin'] = 'admin:admin';\nmsg.headers['Content-Type'] = 'application/xml;ty=4';\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 80,
+        "wires": [
+            [
+                "c07a37672ad9e561"
+            ]
+        ]
+    },
+    {
+        "id": "bcc46c5783b8331b",
+        "type": "http response",
+        "z": "5b2af54329ecc956",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 730,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "da6a7f9b0bf9d7b0",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 19",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "c07a37672ad9e561",
+        "type": "http request",
+        "z": "5b2af54329ecc956",
+        "name": "post to mn_cse",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8282/~/mn-cse/mn-name/user_John/activity_calendar",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 540,
+        "y": 80,
+        "wires": [
+            [
+                "da6a7f9b0bf9d7b0",
+                "bcc46c5783b8331b"
+            ]
+        ]
+    },
+    {
+        "id": "0951bd9dd3722a32",
+        "type": "http in",
+        "z": "5b2af54329ecc956",
+        "name": "",
+        "url": "/create_water_John",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 170,
+        "y": 240,
+        "wires": [
+            [
+                "f498d5dcf3c927fb"
+            ]
+        ]
+    },
+    {
+        "id": "f498d5dcf3c927fb",
+        "type": "function",
+        "z": "5b2af54329ecc956",
+        "name": "function 7",
+        "func": "/*jshint multistr: true */\nvar label = msg.payload.year + msg.payload.month + msg.payload.day;\n\nvar data = '<m2m:cin xmlns:m2m=\"http://www.onem2m.org/xml/protocols\">\\\n\t<cnf>message</cnf>\\\n\t<lbl>' + label + '</lbl>\\\n\t<con>\\\n\t  &lt;obj&gt;\\\n\t\t&lt;str name=&quot;year&quot; val=&quot;'+ msg.payload.year + '&quot;/&gt;\\\n\t\t&lt;str name=&quot;month&quot; val=&quot;'+ msg.payload.month+ '&quot;/&gt;\\\n\t\t&lt;str name=&quot;day&quot; val=&quot;'+ msg.payload.day + '&quot;/&gt;\\\n\t\t&lt;str name=&quot;water&quot; val=&quot;'+ msg.payload.water + '&quot;/&gt;\\\n\t  &lt;/obj&gt;\\\n\t</con>\\\n</m2m:cin>';\n\nmsg.payload = data;\nmsg.headers = {};\nmsg.headers['X-M2M-Origin'] = 'admin:admin';\nmsg.headers['Content-Type'] = 'application/xml;ty=4';\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 240,
+        "wires": [
+            [
+                "b7c1590a703915d7"
+            ]
+        ]
+    },
+    {
+        "id": "90660553a11b1edd",
+        "type": "http response",
+        "z": "5b2af54329ecc956",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 730,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "961d077f0f3b3dfa",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 20",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "b7c1590a703915d7",
+        "type": "http request",
+        "z": "5b2af54329ecc956",
+        "name": "post to mn_cse",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8282/~/mn-cse/mn-name/user_John/person/water",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 540,
+        "y": 240,
+        "wires": [
+            [
+                "961d077f0f3b3dfa",
+                "90660553a11b1edd"
+            ]
+        ]
+    },
+    {
+        "id": "dc67ddcdecedc765",
+        "type": "http in",
+        "z": "5b2af54329ecc956",
+        "name": "",
+        "url": "/create_medication_John",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 190,
+        "y": 320,
+        "wires": [
+            [
+                "02459e68744581a0"
+            ]
+        ]
+    },
+    {
+        "id": "02459e68744581a0",
+        "type": "function",
+        "z": "5b2af54329ecc956",
+        "name": "function 8",
+        "func": "/*jshint multistr: true */\nvar label = msg.payload.year + msg.payload.month + msg.payload.day;\n\nvar data = '<m2m:cin xmlns:m2m=\"http://www.onem2m.org/xml/protocols\">\\\n\t<cnf>message</cnf>\\\n\t<lbl>' + label + '</lbl>\\\n\t<con>\\\n\t  &lt;obj&gt;\\\n\t\t&lt;str name=&quot;year&quot; val=&quot;'+ msg.payload.year + '&quot;/&gt;\\\n\t\t&lt;str name=&quot;month&quot; val=&quot;'+ msg.payload.month+ '&quot;/&gt;\\\n\t\t&lt;str name=&quot;day&quot; val=&quot;'+ msg.payload.day + '&quot;/&gt;\\\n\t\t&lt;str name=&quot;medication&quot; val=&quot;'+ msg.payload.medication + '&quot;/&gt;\\\n\t  &lt;/obj&gt;\\\n\t</con>\\\n</m2m:cin>';\n\nmsg.payload = data;\nmsg.headers = {};\nmsg.headers['X-M2M-Origin'] = 'admin:admin';\nmsg.headers['Content-Type'] = 'application/xml;ty=4';\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 320,
+        "wires": [
+            [
+                "3be8ad6467272ac1"
+            ]
+        ]
+    },
+    {
+        "id": "f70ce0255691c9bd",
+        "type": "http response",
+        "z": "5b2af54329ecc956",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 730,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "5785e05ddb22f0ac",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 21",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "3be8ad6467272ac1",
+        "type": "http request",
+        "z": "5b2af54329ecc956",
+        "name": "post to mn_cse",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8282/~/mn-cse/mn-name/user_John/person/medication",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 560,
+        "y": 320,
+        "wires": [
+            [
+                "5785e05ddb22f0ac",
+                "f70ce0255691c9bd"
+            ]
+        ]
+    },
+    {
+        "id": "8250ec1c81be9234",
+        "type": "http in",
+        "z": "5b2af54329ecc956",
+        "name": "",
+        "url": "/group_activity",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 150,
+        "y": 440,
+        "wires": [
+            [
+                "f92be6bea16e2cd4",
+                "405e7e91f2375655"
+            ]
+        ]
+    },
+    {
+        "id": "a9d7f3a3bb978933",
+        "type": "http response",
+        "z": "5b2af54329ecc956",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 990,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "f92be6bea16e2cd4",
+        "type": "xml",
+        "z": "5b2af54329ecc956",
+        "name": "",
+        "property": "payload",
+        "attr": "",
+        "chr": "",
+        "x": 450,
+        "y": 440,
+        "wires": [
+            [
+                "4c5caede15a4d9d8"
+            ]
+        ]
+    },
+    {
+        "id": "4c5caede15a4d9d8",
+        "type": "function",
+        "z": "5b2af54329ecc956",
+        "name": "get status",
+        "func": "var data = msg.payload[\"m2m:sgn\"].nev[0].rep[0][\"m2m:cin\"][0].con[0];\nmsg.payload = data\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 440,
+        "wires": [
+            [
+                "2a377287e9e6b70e"
+            ]
+        ]
+    },
+    {
+        "id": "2a377287e9e6b70e",
+        "type": "xml",
+        "z": "5b2af54329ecc956",
+        "name": "",
+        "property": "payload",
+        "attr": "",
+        "chr": "",
+        "x": 750,
+        "y": 440,
+        "wires": [
+            [
+                "c84bc1392cc46628"
+            ]
+        ]
+    },
+    {
+        "id": "c84bc1392cc46628",
+        "type": "function",
+        "z": "5b2af54329ecc956",
+        "name": "set object",
+        "func": "var New = { year: null, month: null, day: null, part: null, user: null };\nNew.year = msg.payload.obj.str[0].$.val;\nNew.month = msg.payload.obj.str[1].$.val;\nNew.day= msg.payload.obj.str[2].$.val;\nNew.part = msg.payload.obj.str[3].$.val;\nNew.user = msg.payload.obj.str[4].$.val;\nmsg.payload = New;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 900,
+        "y": 440,
+        "wires": [
+            [
+                "d356d0f718f34680"
+            ]
+        ]
+    },
+    {
+        "id": "d356d0f718f34680",
+        "type": "function",
+        "z": "5b2af54329ecc956",
+        "name": "set payload and header",
+        "func": "/*jshint multistr: true */\nvar label = msg.payload.year + msg.payload.month + msg.payload.day;\n\nvar data = '<m2m:cin xmlns:m2m=\"http://www.onem2m.org/xml/protocols\">\\\n\t<cnf>message</cnf>\\\n\t<lbl>' + label + '</lbl>\\\n\t<con>\\\n\t  &lt;obj&gt;\\\n\t\t&lt;str name=&quot;year&quot; val=&quot;'+ msg.payload.year + '&quot;/&gt;\\\n\t\t&lt;str name=&quot;month&quot; val=&quot;'+ msg.payload.month + '&quot;/&gt;\\\n\t\t&lt;str name=&quot;day&quot; val=&quot;'+ msg.payload.day + '&quot;/&gt;\\\n\t\t&lt;str name=&quot;part&quot; val=&quot;'+ msg.payload.part + '&quot;/&gt;\\\n\t\t&lt;str name=&quot;user&quot; val=&quot;'+ msg.payload.user + '&quot;/&gt;\\\n\t  &lt;/obj&gt;\\\n\t</con>\\\n</m2m:cin>';\n\nmsg.payload = data;\nmsg.headers = {};\nmsg.headers['X-M2M-Origin'] = 'admin:admin';\nmsg.headers['Content-Type'] = 'application/xml;ty=4';\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1150,
+        "y": 440,
+        "wires": [
+            [
+                "3071d0c831aec457"
+            ]
+        ]
+    },
+    {
+        "id": "3071d0c831aec457",
+        "type": "http request",
+        "z": "5b2af54329ecc956",
+        "name": "post to in-cse",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://127.0.0.1:8080/~/in-cse/in-name/group_activity/activity_calendar",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 790,
+        "y": 520,
+        "wires": [
+            [
+                "a9d7f3a3bb978933",
+                "d5cf0c018f01d490"
+            ]
+        ]
+    },
+    {
+        "id": "d5cf0c018f01d490",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 24",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1000,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "405e7e91f2375655",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 25",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 360,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "7068a471d33b7f43",
+        "type": "http in",
+        "z": "5b2af54329ecc956",
+        "name": "",
+        "url": "/get_AC_in",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 760,
+        "wires": [
+            [
+                "e175b0a65026bd3f",
+                "63845b922e5c5d12"
+            ]
+        ]
+    },
+    {
+        "id": "63845b922e5c5d12",
+        "type": "function",
+        "z": "5b2af54329ecc956",
+        "name": "function 9",
+        "func": "let y = (msg.req.query.year || \"\").padStart(4, \"0\");\nlet m = (msg.req.query.month || \"\").padStart(2, \"0\");\nlet d = (msg.req.query.day || \"\").padStart(2, \"0\");\nlet lbl = `${y}${m}${d}`;           // 20250521\n\nmsg.method = \"GET\";\nmsg.url = \"http://127.0.0.1:8080\"\n    + \"/~/in-cse/in-name/group_activity/activity_calendar\"\n    + `?fu=1&ty=4&lbl=${lbl}&drt=1`;\nmsg.headers = {\n    \"X-M2M-Origin\": \"admin:admin\",     // 帳密\n    \"Accept\": \"application/json\"\n};\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 760,
+        "wires": [
+            [
+                "f8bd1d02ac4282ae",
+                "7a407b179e3a0935"
+            ]
+        ]
+    },
+    {
+        "id": "e303ced2b680f326",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 26",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1340,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "25bf38c02d87654a",
+        "type": "http response",
+        "z": "5b2af54329ecc956",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1330,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "f8bd1d02ac4282ae",
+        "type": "http request",
+        "z": "5b2af54329ecc956",
+        "name": "discovery",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 500,
+        "y": 760,
+        "wires": [
+            [
+                "ee619ccd6277dd70",
+                "47b9a25f6e1158e7"
+            ]
+        ]
+    },
+    {
+        "id": "e175b0a65026bd3f",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 28",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 340,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "ee619ccd6277dd70",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 29",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "7a407b179e3a0935",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 30",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "47b9a25f6e1158e7",
+        "type": "function",
+        "z": "5b2af54329ecc956",
+        "name": "function 11",
+        "func": "msg.parts = { id: \"ci\", index: 0, count: 0 };   // 為 split 準備\nmsg.payload = (msg.payload[\"m2m:uril\"] || []);\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 690,
+        "y": 760,
+        "wires": [
+            [
+                "02a83be6ceba5057",
+                "fb621873e320107a"
+            ]
+        ]
+    },
+    {
+        "id": "02a83be6ceba5057",
+        "type": "split",
+        "z": "5b2af54329ecc956",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 850,
+        "y": 760,
+        "wires": [
+            [
+                "7492960b7f4525d0",
+                "7e55f5a22e74d1f1"
+            ]
+        ]
+    },
+    {
+        "id": "7492960b7f4525d0",
+        "type": "function",
+        "z": "5b2af54329ecc956",
+        "name": "function 12",
+        "func": "msg.method = \"GET\";\nmsg.url = \"http://127.0.0.1:8080/~\" + msg.payload;   // ← 加上 /~\nmsg.headers = {\n    \"X-M2M-Origin\": \"admin:admin\",\n    \"Accept\": \"application/json\"\n};\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1030,
+        "y": 760,
+        "wires": [
+            [
+                "0ed6e7b394df32b3",
+                "2c21d20d992feca8"
+            ]
+        ]
+    },
+    {
+        "id": "0ed6e7b394df32b3",
+        "type": "http request",
+        "z": "5b2af54329ecc956",
+        "name": "",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1230,
+        "y": 760,
+        "wires": [
+            [
+                "d8a21d4174671a3d",
+                "98ae9985ac53046a"
+            ]
+        ]
+    },
+    {
+        "id": "d8a21d4174671a3d",
+        "type": "function",
+        "z": "5b2af54329ecc956",
+        "name": "function 13",
+        "func": "/***** function 13 : parsePartAndUser *****/\n\n// 1. 取出 con 字串 / 物件\nlet ci = msg.payload[\"m2m:cin\"] || msg.payload;\nlet raw = ci.con || \"\";\n\n// 2. 宣告要抓的欄位\nlet part = \"\";\nlet user = \"\";\n\n/* 3. 解析 JSON 或 XML */\nif (typeof raw === \"object\") {            // 已經是物件\n    part = raw.part || \"\";\n    user = raw.user || \"\";\n}\nelse if (typeof raw === \"string\") {\n    raw = raw.trim();\n\n    // 3-1 JSON 字串\n    if (raw.startsWith(\"{\")) {\n        try {\n            let obj = JSON.parse(raw);\n            part = obj.part || \"\";\n            user = obj.user || \"\";\n        } catch (e) { }\n    }\n    // 3-2 XML 字串：<str name=\"part\" val=\"xx\"/>、<str name=\"user\" val=\"yy\"/>\n    else {\n        const grab = key => {\n            const m = raw.match(\n                new RegExp(`name=[\"']${key}[\"']\\\\s+val=[\"']([^\"']+)[\"']`, \"i\")\n            );\n            return m ? m[1] : \"\";\n        };\n        part = grab(\"part\");\n        user = grab(\"user\");\n    }\n}\n\n// 4. 輸出字串：user + 空格 + part\nmsg.payload = `${user} : ${part}`.trim(); // 現在輸出 \"Mary : wow\"\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 990,
+        "y": 860,
+        "wires": [
+            [
+                "d71a9545ec0aca7f",
+                "1fb781b820df6096"
+            ]
+        ]
+    },
+    {
+        "id": "d71a9545ec0aca7f",
+        "type": "join",
+        "z": "5b2af54329ecc956",
+        "name": "",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 1170,
+        "y": 860,
+        "wires": [
+            [
+                "e303ced2b680f326",
+                "25bf38c02d87654a"
+            ]
+        ]
+    },
+    {
+        "id": "fb621873e320107a",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 31",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 900,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "7e55f5a22e74d1f1",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 32",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1080,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "2c21d20d992feca8",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 33",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1280,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "98ae9985ac53046a",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 34",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1420,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "1fb781b820df6096",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 35",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "db93f640da92a489",
+        "type": "http in",
+        "z": "5b2af54329ecc956",
+        "name": "",
+        "url": "/John_water",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 1060,
+        "wires": [
+            [
+                "97067853acbfa4e0",
+                "08682b2e56b0fe10"
+            ]
+        ]
+    },
+    {
+        "id": "08682b2e56b0fe10",
+        "type": "function",
+        "z": "5b2af54329ecc956",
+        "name": "function 14",
+        "func": "/* 把 query 變成 YYYYMMDD */\nlet y = (msg.req.query.year || \"\").padStart(4, \"0\");\nlet m = (msg.req.query.month || \"\").padStart(2, \"0\");\nlet d = (msg.req.query.day || \"\").padStart(2, \"0\");\nlet lbl = `${y}${m}${d}`;                       // 例 20250507\n\nmsg.method = \"GET\";\nmsg.url = \"http://127.0.0.1:8282\"\n    + \"/~/mn-cse/mn-name/user_John/person/water\"\n    + `?fu=1&ty=4&lbl=${lbl}&drt=1&rs=1`;      // discovery → URI list\nmsg.headers = {\n    \"X-M2M-Origin\": \"admin:admin\",\n    \"Accept\": \"application/json\"                   // 只要回 URI，用 JSON OK\n};\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 1060,
+        "wires": [
+            [
+                "e5b0a88b36e88b64",
+                "b2f3ee63f0866be1"
+            ]
+        ]
+    },
+    {
+        "id": "73dea5c1f155464d",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 36",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1260,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "aa8b5294ef7c2cab",
+        "type": "http response",
+        "z": "5b2af54329ecc956",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1250,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "e5b0a88b36e88b64",
+        "type": "http request",
+        "z": "5b2af54329ecc956",
+        "name": "discovery",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 520,
+        "y": 1060,
+        "wires": [
+            [
+                "907f224848bf6e29",
+                "3f311bb6cbadf07a"
+            ]
+        ]
+    },
+    {
+        "id": "97067853acbfa4e0",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 37",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 340,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "907f224848bf6e29",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 38",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "b2f3ee63f0866be1",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 39",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "3f311bb6cbadf07a",
+        "type": "function",
+        "z": "5b2af54329ecc956",
+        "name": "function 15",
+        "func": "/* 1. 取 URI 陣列 */\nlet uris = msg.payload[\"m2m:uril\"] || [];\nif (uris.length === 0) {\n    msg.payload = \"no_data\";\n    return msg;\n}\n\n/* 2. 取最後一筆（最新） */\nlet latest = uris[uris.length - 1];            // 例 /mn-cse/.../cin_124\n\n/* 3. 拼成完整 GET URL */\nmsg.method = \"GET\";\nmsg.url = \"http://127.0.0.1:8282/~/\"\n    + latest.replace(/^\\/+/, \"\");      // 去掉前導斜線避免 //~\nmsg.headers = {\n    \"X-M2M-Origin\": \"admin:admin\",\n    \"Accept\": \"application/xml\"                   // ← con 不是 JSON，改用 xml\n};\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 690,
+        "y": 1060,
+        "wires": [
+            [
+                "bd7e7ffd9e4b1026",
+                "f0fcc9aab84efc9e"
+            ]
+        ]
+    },
+    {
+        "id": "f0fcc9aab84efc9e",
+        "type": "http request",
+        "z": "5b2af54329ecc956",
+        "name": "",
+        "method": "use",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 870,
+        "y": 1060,
+        "wires": [
+            [
+                "4037f8496afa26ea",
+                "96d10fd041e2878c"
+            ]
+        ]
+    },
+    {
+        "id": "4037f8496afa26ea",
+        "type": "function",
+        "z": "5b2af54329ecc956",
+        "name": "function 17",
+        "func": "/* 0. 沒資料直接回覆 */\nif (msg.payload === \"no_data\") {\n    msg.payload = \"今天沒有飲水紀錄\";\n    return msg;\n}\n\n/* 1. 取到原始 XML 字串 */\nlet xml = (typeof msg.payload === \"object\")\n    ? (msg.payload[\"m2m:cin\"] || msg.payload).con\n    : msg.payload;\n\n/* 2. 先把 &lt; &gt; &quot; 還原成真正符號 */\nlet unescaped = xml\n    .replace(/&lt;/g, \"<\")\n    .replace(/&gt;/g, \">\")\n    .replace(/&quot;/g, \"\\\"\")\n    .replace(/&amp;/g, \"&\");   // 保險起見也把 &amp; 換掉\n\n/* 3. 用正則抓 name=\"water\" val=\"XXX\" */\nlet m = unescaped.match(/name\\s*=\\s*[\"']water[\"']\\s+val\\s*=\\s*[\"']([^\"']+)[\"']/i);\n\nmsg.payload = m ? (m[1]) : \"未找到飲水量\";\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1050,
+        "y": 1060,
+        "wires": [
+            [
+                "aa8b5294ef7c2cab",
+                "73dea5c1f155464d"
+            ]
+        ]
+    },
+    {
+        "id": "bd7e7ffd9e4b1026",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 40",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 900,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "96d10fd041e2878c",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 43",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1080,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "7e4e42fbadd645e7",
+        "type": "http in",
+        "z": "5b2af54329ecc956",
+        "name": "",
+        "url": "/John_medication",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 1200,
+        "wires": [
+            [
+                "4f9851d2a1b96984",
+                "e11a825238782b65"
+            ]
+        ]
+    },
+    {
+        "id": "e11a825238782b65",
+        "type": "function",
+        "z": "5b2af54329ecc956",
+        "name": "function 18",
+        "func": "/* 把 query 變成 YYYYMMDD */\nlet y = (msg.req.query.year || \"\").padStart(4, \"0\");\nlet m = (msg.req.query.month || \"\").padStart(2, \"0\");\nlet d = (msg.req.query.day || \"\").padStart(2, \"0\");\nlet lbl = `${y}${m}${d}`;                       // 例 20250507\n\nmsg.method = \"GET\";\nmsg.url = \"http://127.0.0.1:8282\"\n    + \"/~/mn-cse/mn-name/user_John/person/medication\"\n    + `?fu=1&ty=4&lbl=${lbl}&drt=1`;      // discovery → URI list\nmsg.headers = {\n    \"X-M2M-Origin\": \"admin:admin\",\n    \"Accept\": \"application/json\"                   // 只要回 URI，用 JSON OK\n};\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 1200,
+        "wires": [
+            [
+                "b0724d3cd0aeb4c4",
+                "fd51206aee451df0"
+            ]
+        ]
+    },
+    {
+        "id": "b4d1befa1a54ba7a",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 44",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1300,
+        "y": 1180,
+        "wires": []
+    },
+    {
+        "id": "b4abc8cb824bea7a",
+        "type": "http response",
+        "z": "5b2af54329ecc956",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1290,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "b0724d3cd0aeb4c4",
+        "type": "http request",
+        "z": "5b2af54329ecc956",
+        "name": "discovery",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 540,
+        "y": 1200,
+        "wires": [
+            [
+                "015542216d39739d",
+                "619651ae0961156d"
+            ]
+        ]
+    },
+    {
+        "id": "4f9851d2a1b96984",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 45",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 380,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "015542216d39739d",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 46",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "fd51206aee451df0",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 47",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "619651ae0961156d",
+        "type": "function",
+        "z": "5b2af54329ecc956",
+        "name": "function 19",
+        "func": "/* 1. 取 URI 陣列 */\nlet uris = msg.payload[\"m2m:uril\"] || [];\nif (uris.length === 0) {\n    msg.payload = \"no_data\";\n    return msg;\n}\n\n/* 2. 取最後一筆（最新） */\nlet latest = uris[uris.length - 1];            // 例 /mn-cse/.../cin_124\n\n/* 3. 拼成完整 GET URL */\nmsg.method = \"GET\";\nmsg.url = \"http://127.0.0.1:8282/~/\"\n    + latest.replace(/^\\/+/, \"\");      // 去掉前導斜線避免 //~\nmsg.headers = {\n    \"X-M2M-Origin\": \"admin:admin\",\n    \"Accept\": \"application/xml\"                   // ← con 不是 JSON，改用 xml\n};\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 1200,
+        "wires": [
+            [
+                "9972c42f08a9a43b",
+                "c7ed6281efc5ab93"
+            ]
+        ]
+    },
+    {
+        "id": "c7ed6281efc5ab93",
+        "type": "http request",
+        "z": "5b2af54329ecc956",
+        "name": "",
+        "method": "use",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 910,
+        "y": 1200,
+        "wires": [
+            [
+                "80aceb39b66cc6f4",
+                "da292a1686c760b5"
+            ]
+        ]
+    },
+    {
+        "id": "80aceb39b66cc6f4",
+        "type": "function",
+        "z": "5b2af54329ecc956",
+        "name": "function 20",
+        "func": "/* 0. 沒資料直接回覆 */\nif (msg.payload === \"no_data\") {\n    msg.payload = \"今天沒有吃藥紀錄\";\n    return msg;\n}\n\n/* 1. 取到原始 XML 字串 */\nlet xml = (typeof msg.payload === \"object\")\n    ? (msg.payload[\"m2m:cin\"] || msg.payload).con\n    : msg.payload;\n\n/* 2. 先把 &lt; &gt; &quot; 還原成真正符號 */\nlet unescaped = xml\n    .replace(/&lt;/g, \"<\")\n    .replace(/&gt;/g, \">\")\n    .replace(/&quot;/g, \"\\\"\")\n    .replace(/&amp;/g, \"&\");   // 保險起見也把 &amp; 換掉\n\n/* 3. 用正則抓 name=\"water\" val=\"XXX\" */\nlet m = unescaped.match(/name\\s*=\\s*[\"']medication[\"']\\s+val\\s*=\\s*[\"']([^\"']+)[\"']/i);\n\nmsg.payload = m ? (m[1]) : \"未找到吃藥紀錄\";\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1090,
+        "y": 1200,
+        "wires": [
+            [
+                "b4abc8cb824bea7a",
+                "b4d1befa1a54ba7a"
+            ]
+        ]
+    },
+    {
+        "id": "9972c42f08a9a43b",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 48",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "da292a1686c760b5",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 49",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1120,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "788dce16f937e8d3",
+        "type": "http in",
+        "z": "5b2af54329ecc956",
+        "name": "",
+        "url": "/get_AC",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 1480,
+        "wires": [
+            [
+                "dc48eaca94b1db06",
+                "08dd04c62b30bd80"
+            ]
+        ]
+    },
+    {
+        "id": "08dd04c62b30bd80",
+        "type": "function",
+        "z": "5b2af54329ecc956",
+        "name": "function 35",
+        "func": "let y = (msg.req.query.year || \"\").padStart(4, \"0\");\nlet m = (msg.req.query.month || \"\").padStart(2, \"0\");\nlet d = (msg.req.query.day || \"\").padStart(2, \"0\");\nlet lbl = `${y}${m}${d}`;           // 20250521\n\nmsg.method = \"GET\";\nmsg.url = \"http://127.0.0.1:8080\"\n    + \"/~/in-cse/in-name/group_activity/activity_calendar\"\n    + `?fu=1&ty=4&lbl=${lbl}&drt=1`;\nmsg.headers = {\n    \"X-M2M-Origin\": \"admin:admin\",     // 帳密\n    \"Accept\": \"application/json\"\n};\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 1480,
+        "wires": [
+            [
+                "1035d45d9b616557",
+                "74ac413d3c0e8003"
+            ]
+        ]
+    },
+    {
+        "id": "f892b180ee2aef5c",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 77",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1340,
+        "y": 1560,
+        "wires": []
+    },
+    {
+        "id": "4ca5b56329873d20",
+        "type": "http response",
+        "z": "5b2af54329ecc956",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1330,
+        "y": 1600,
+        "wires": []
+    },
+    {
+        "id": "1035d45d9b616557",
+        "type": "http request",
+        "z": "5b2af54329ecc956",
+        "name": "discovery",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 500,
+        "y": 1480,
+        "wires": [
+            [
+                "86b89634c628dd47",
+                "af5dd75dfe6e5957"
+            ]
+        ]
+    },
+    {
+        "id": "dc48eaca94b1db06",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 78",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 340,
+        "y": 1420,
+        "wires": []
+    },
+    {
+        "id": "86b89634c628dd47",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 79",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 1420,
+        "wires": []
+    },
+    {
+        "id": "74ac413d3c0e8003",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 80",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 1420,
+        "wires": []
+    },
+    {
+        "id": "af5dd75dfe6e5957",
+        "type": "function",
+        "z": "5b2af54329ecc956",
+        "name": "function 36",
+        "func": "msg.parts = { id: \"ci\", index: 0, count: 0 };   // 為 split 準備\nmsg.payload = (msg.payload[\"m2m:uril\"] || []);\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 690,
+        "y": 1480,
+        "wires": [
+            [
+                "9fb8afd3f0717590",
+                "20de073d7fc8958a"
+            ]
+        ]
+    },
+    {
+        "id": "9fb8afd3f0717590",
+        "type": "split",
+        "z": "5b2af54329ecc956",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 850,
+        "y": 1480,
+        "wires": [
+            [
+                "3e75d208bcf28c4b",
+                "c39e051e9c7e2cba"
+            ]
+        ]
+    },
+    {
+        "id": "3e75d208bcf28c4b",
+        "type": "function",
+        "z": "5b2af54329ecc956",
+        "name": "function 37",
+        "func": "msg.method = \"GET\";\nmsg.url = \"http://127.0.0.1:8080/~\" + msg.payload;   // ← 加上 /~\nmsg.headers = {\n    \"X-M2M-Origin\": \"admin:admin\",\n    \"Accept\": \"application/json\"\n};\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1030,
+        "y": 1480,
+        "wires": [
+            [
+                "42662703fa33b11c",
+                "c6319906fc35ce44"
+            ]
+        ]
+    },
+    {
+        "id": "42662703fa33b11c",
+        "type": "http request",
+        "z": "5b2af54329ecc956",
+        "name": "",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1230,
+        "y": 1480,
+        "wires": [
+            [
+                "300c19f1792b273a",
+                "90dbef33b0f60d7e"
+            ]
+        ]
+    },
+    {
+        "id": "300c19f1792b273a",
+        "type": "function",
+        "z": "5b2af54329ecc956",
+        "name": "function 38",
+        "func": "// 1. 取出 contentInstance 物件\nlet ci = msg.payload[\"m2m:cin\"] || msg.payload;\nlet raw = ci.con || \"\";\n\n// 2. 嘗試 JSON → 失敗就走 XML / 雜湊字串\nlet part = \"\";\n\nif (typeof raw === \"object\") {           // 已是物件\n    part = raw.part || \"\";\n}\nelse if (typeof raw === \"string\") {\n    raw = raw.trim();\n\n    // 2-1. 嘗試 JSON\n    if (raw.startsWith(\"{\")) {\n        try { part = JSON.parse(raw).part || \"\"; }\n        catch (e) { part = \"\"; }\n    }\n    // 2-2. 嘗試簡易 XML：「name=\"part\" val=\"XXX\"」\n    else {\n        const m = raw.match(/name=[\"']part[\"']\\s+val=[\"']([^\"']+)[\"']/i);\n        part = m ? m[1] : \"\";\n    }\n}\n\n// 3. 輸出部位字串（給 join）\nmsg.payload = part.trim();   // 例 \"body2\"\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 990,
+        "y": 1580,
+        "wires": [
+            [
+                "631a720a0422a08b",
+                "e37c9d7107d88f0f"
+            ]
+        ]
+    },
+    {
+        "id": "631a720a0422a08b",
+        "type": "join",
+        "z": "5b2af54329ecc956",
+        "name": "",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 1170,
+        "y": 1580,
+        "wires": [
+            [
+                "f892b180ee2aef5c",
+                "4ca5b56329873d20"
+            ]
+        ]
+    },
+    {
+        "id": "20de073d7fc8958a",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 81",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 900,
+        "y": 1420,
+        "wires": []
+    },
+    {
+        "id": "c39e051e9c7e2cba",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 82",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1080,
+        "y": 1420,
+        "wires": []
+    },
+    {
+        "id": "c6319906fc35ce44",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 83",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1280,
+        "y": 1420,
+        "wires": []
+    },
+    {
+        "id": "90dbef33b0f60d7e",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 84",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1420,
+        "y": 1480,
+        "wires": []
+    },
+    {
+        "id": "e37c9d7107d88f0f",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 85",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 1640,
+        "wires": []
+    },
+    {
+        "id": "9ebdd5870d89618e",
+        "type": "http in",
+        "z": "5b2af54329ecc956",
+        "name": "",
+        "url": "/create_calories_John",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 180,
+        "y": 160,
+        "wires": [
+            [
+                "e467a7b6007b40a6",
+                "7150ae74cdb74881"
+            ]
+        ]
+    },
+    {
+        "id": "e467a7b6007b40a6",
+        "type": "function",
+        "z": "5b2af54329ecc956",
+        "name": "function 39",
+        "func": "/*jshint multistr: true */\nvar label = msg.payload.year + msg.payload.month + msg.payload.day;\n\nvar data = '<m2m:cin xmlns:m2m=\"http://www.onem2m.org/xml/protocols\">\\\n\t<cnf>message</cnf>\\\n\t<lbl>' + label + '</lbl>\\\n\t<con>\\\n\t  &lt;obj&gt;\\\n\t\t&lt;str name=&quot;year&quot; val=&quot;'+ msg.payload.year + '&quot;/&gt;\\\n\t\t&lt;str name=&quot;month&quot; val=&quot;'+ msg.payload.month+ '&quot;/&gt;\\\n\t\t&lt;str name=&quot;day&quot; val=&quot;'+ msg.payload.day + '&quot;/&gt;\\\n\t\t&lt;str name=&quot;calories&quot; val=&quot;'+ msg.payload.calories + '&quot;/&gt;\\\n\t  &lt;/obj&gt;\\\n\t</con>\\\n</m2m:cin>';\n\nmsg.payload = data;\nmsg.headers = {};\nmsg.headers['X-M2M-Origin'] = 'admin:admin';\nmsg.headers['Content-Type'] = 'application/xml;ty=4';\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 160,
+        "wires": [
+            [
+                "f6175c6edcd80029",
+                "276da8e32dec4972"
+            ]
+        ]
+    },
+    {
+        "id": "31791c5429a72ee2",
+        "type": "http response",
+        "z": "5b2af54329ecc956",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 730,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "74a889dbfaa95707",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 86",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "f6175c6edcd80029",
+        "type": "http request",
+        "z": "5b2af54329ecc956",
+        "name": "post to mn_cse",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8282/~/mn-cse/mn-name/user_John/person/calories",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 560,
+        "y": 160,
+        "wires": [
+            [
+                "74a889dbfaa95707",
+                "31791c5429a72ee2"
+            ]
+        ]
+    },
+    {
+        "id": "456f81220777bfe2",
+        "type": "http in",
+        "z": "5b2af54329ecc956",
+        "name": "",
+        "url": "/John_calories",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 1340,
+        "wires": [
+            [
+                "622dae4a10753109",
+                "df0fa6bbea95b608"
+            ]
+        ]
+    },
+    {
+        "id": "df0fa6bbea95b608",
+        "type": "function",
+        "z": "5b2af54329ecc956",
+        "name": "function 40",
+        "func": "/* 把 query 變成 YYYYMMDD */\nlet y = (msg.req.query.year || \"\").padStart(4, \"0\");\nlet m = (msg.req.query.month || \"\").padStart(2, \"0\");\nlet d = (msg.req.query.day || \"\").padStart(2, \"0\");\nlet lbl = `${y}${m}${d}`;                       // 例 20250507\n\nmsg.method = \"GET\";\nmsg.url = \"http://127.0.0.1:8282\"\n    + \"/~/mn-cse/mn-name/user_John/person/calories\"\n    + `?fu=1&ty=4&lbl=${lbl}&drt=1`;      // discovery → URI list\nmsg.headers = {\n    \"X-M2M-Origin\": \"admin:admin\",\n    \"Accept\": \"application/json\"                   // 只要回 URI，用 JSON OK\n};\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 1340,
+        "wires": [
+            [
+                "1b21d86203213e4e",
+                "ef2524b44cebf09e"
+            ]
+        ]
+    },
+    {
+        "id": "4fb10831f8e4d50a",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 87",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1280,
+        "y": 1320,
+        "wires": []
+    },
+    {
+        "id": "c88d983497a2363f",
+        "type": "http response",
+        "z": "5b2af54329ecc956",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1270,
+        "y": 1360,
+        "wires": []
+    },
+    {
+        "id": "1b21d86203213e4e",
+        "type": "http request",
+        "z": "5b2af54329ecc956",
+        "name": "discovery",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 540,
+        "y": 1340,
+        "wires": [
+            [
+                "7dc17eed5b205fd4",
+                "cd7099ad15cdf4f1"
+            ]
+        ]
+    },
+    {
+        "id": "622dae4a10753109",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 88",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 360,
+        "y": 1280,
+        "wires": []
+    },
+    {
+        "id": "7dc17eed5b205fd4",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 89",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 1280,
+        "wires": []
+    },
+    {
+        "id": "ef2524b44cebf09e",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 90",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 1280,
+        "wires": []
+    },
+    {
+        "id": "cd7099ad15cdf4f1",
+        "type": "function",
+        "z": "5b2af54329ecc956",
+        "name": "function 41",
+        "func": "/* 1. 取 URI 陣列 */\nlet uris = msg.payload[\"m2m:uril\"] || [];\nif (uris.length === 0) {\n    msg.payload = \"no_data\";\n    return msg;\n}\n\n/* 2. 取最後一筆（最新） */\nlet latest = uris[uris.length - 1];            // 例 /mn-cse/.../cin_124\n\n/* 3. 拼成完整 GET URL */\nmsg.method = \"GET\";\nmsg.url = \"http://127.0.0.1:8282/~/\"\n    + latest.replace(/^\\/+/, \"\");      // 去掉前導斜線避免 //~\nmsg.headers = {\n    \"X-M2M-Origin\": \"admin:admin\",\n    \"Accept\": \"application/xml\"                   // ← con 不是 JSON，改用 xml\n};\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 1340,
+        "wires": [
+            [
+                "7cb3ab3e2664fada",
+                "c4fda53e449a97c9"
+            ]
+        ]
+    },
+    {
+        "id": "c4fda53e449a97c9",
+        "type": "http request",
+        "z": "5b2af54329ecc956",
+        "name": "",
+        "method": "use",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 890,
+        "y": 1340,
+        "wires": [
+            [
+                "d9b7f867ef0da5c5",
+                "67d421c16dbb13c6"
+            ]
+        ]
+    },
+    {
+        "id": "d9b7f867ef0da5c5",
+        "type": "function",
+        "z": "5b2af54329ecc956",
+        "name": "function 42",
+        "func": "/* 0. 沒資料直接回覆 */\nif (msg.payload === \"no_data\") {\n    msg.payload = \"今天沒有calories紀錄\";\n    return msg;\n}\n\n/* 1. 取到原始 XML 字串 */\nlet xml = (typeof msg.payload === \"object\")\n    ? (msg.payload[\"m2m:cin\"] || msg.payload).con\n    : msg.payload;\n\n/* 2. 先把 &lt; &gt; &quot; 還原成真正符號 */\nlet unescaped = xml\n    .replace(/&lt;/g, \"<\")\n    .replace(/&gt;/g, \">\")\n    .replace(/&quot;/g, \"\\\"\")\n    .replace(/&amp;/g, \"&\");   // 保險起見也把 &amp; 換掉\n\n/* 3. 用正則抓 name=\"water\" val=\"XXX\" */\nlet m = unescaped.match(/name\\s*=\\s*[\"']calories[\"']\\s+val\\s*=\\s*[\"']([^\"']+)[\"']/i);\n\nmsg.payload = m ? (m[1]) : \"未找到calories紀錄\";\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1070,
+        "y": 1340,
+        "wires": [
+            [
+                "c88d983497a2363f",
+                "4fb10831f8e4d50a"
+            ]
+        ]
+    },
+    {
+        "id": "7cb3ab3e2664fada",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 91",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 1280,
+        "wires": []
+    },
+    {
+        "id": "67d421c16dbb13c6",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 92",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1100,
+        "y": 1280,
+        "wires": []
+    },
+    {
+        "id": "276da8e32dec4972",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 100",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 550,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "7150ae74cdb74881",
+        "type": "debug",
+        "z": "5b2af54329ecc956",
+        "name": "debug 101",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 370,
+        "y": 120,
+        "wires": []
+    }
+]
