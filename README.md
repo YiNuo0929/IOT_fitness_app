@@ -45,3 +45,7 @@ adb install -r ../final_project.apk   # 或手動安裝
 # App 設定頁輸入 mn-cse IP，立即開始打卡
 
 ```
+
+## 執行步驟
+
+詳細可以查看內建的slide內容，有更完整的專案說明
