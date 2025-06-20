@@ -1,0 +1,1080 @@
+[
+    {
+        "id": "cd8031d3f7da3700",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "4b4429a83bde8f30",
+        "type": "http in",
+        "z": "cd8031d3f7da3700",
+        "name": "",
+        "url": "/create_water_Mary",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 270,
+        "y": 180,
+        "wires": [
+            [
+                "f795c4909a236317"
+            ]
+        ]
+    },
+    {
+        "id": "f795c4909a236317",
+        "type": "function",
+        "z": "cd8031d3f7da3700",
+        "name": "function 22",
+        "func": "/*jshint multistr: true */\nvar label = msg.payload.year + msg.payload.month + msg.payload.day;\n\nvar data = '<m2m:cin xmlns:m2m=\"http://www.onem2m.org/xml/protocols\">\\\n\t<cnf>message</cnf>\\\n\t<lbl>' + label + '</lbl>\\\n\t<con>\\\n\t  &lt;obj&gt;\\\n\t\t&lt;str name=&quot;year&quot; val=&quot;'+ msg.payload.year + '&quot;/&gt;\\\n\t\t&lt;str name=&quot;month&quot; val=&quot;'+ msg.payload.month+ '&quot;/&gt;\\\n\t\t&lt;str name=&quot;day&quot; val=&quot;'+ msg.payload.day + '&quot;/&gt;\\\n\t\t&lt;str name=&quot;water&quot; val=&quot;'+ msg.payload.water + '&quot;/&gt;\\\n\t  &lt;/obj&gt;\\\n\t</con>\\\n</m2m:cin>';\n\nmsg.payload = data;\nmsg.headers = {};\nmsg.headers['X-M2M-Origin'] = 'admin:admin';\nmsg.headers['Content-Type'] = 'application/xml;ty=4';\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 180,
+        "wires": [
+            [
+                "0a3e82d905a95d39"
+            ]
+        ]
+    },
+    {
+        "id": "3db5e4de370fb641",
+        "type": "http response",
+        "z": "cd8031d3f7da3700",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 830,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "e8c9d77b6a37f753",
+        "type": "debug",
+        "z": "cd8031d3f7da3700",
+        "name": "debug 51",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 820,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "0a3e82d905a95d39",
+        "type": "http request",
+        "z": "cd8031d3f7da3700",
+        "name": "post to mn_cse",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8282/~/mn-cse/mn-name/user_Mary/person/water",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 640,
+        "y": 180,
+        "wires": [
+            [
+                "e8c9d77b6a37f753",
+                "3db5e4de370fb641"
+            ]
+        ]
+    },
+    {
+        "id": "bf584f01beab8692",
+        "type": "http in",
+        "z": "cd8031d3f7da3700",
+        "name": "",
+        "url": "/create_medication_Mary",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 290,
+        "y": 260,
+        "wires": [
+            [
+                "d8bfbd41547db407"
+            ]
+        ]
+    },
+    {
+        "id": "d8bfbd41547db407",
+        "type": "function",
+        "z": "cd8031d3f7da3700",
+        "name": "function 23",
+        "func": "/*jshint multistr: true */\nvar label = msg.payload.year + msg.payload.month + msg.payload.day;\n\nvar data = '<m2m:cin xmlns:m2m=\"http://www.onem2m.org/xml/protocols\">\\\n\t<cnf>message</cnf>\\\n\t<lbl>' + label + '</lbl>\\\n\t<con>\\\n\t  &lt;obj&gt;\\\n\t\t&lt;str name=&quot;year&quot; val=&quot;'+ msg.payload.year + '&quot;/&gt;\\\n\t\t&lt;str name=&quot;month&quot; val=&quot;'+ msg.payload.month+ '&quot;/&gt;\\\n\t\t&lt;str name=&quot;day&quot; val=&quot;'+ msg.payload.day + '&quot;/&gt;\\\n\t\t&lt;str name=&quot;medication&quot; val=&quot;'+ msg.payload.medication + '&quot;/&gt;\\\n\t  &lt;/obj&gt;\\\n\t</con>\\\n</m2m:cin>';\n\nmsg.payload = data;\nmsg.headers = {};\nmsg.headers['X-M2M-Origin'] = 'admin:admin';\nmsg.headers['Content-Type'] = 'application/xml;ty=4';\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 260,
+        "wires": [
+            [
+                "8bab6da86f0ab21e"
+            ]
+        ]
+    },
+    {
+        "id": "967cc8a40fc3ce98",
+        "type": "http response",
+        "z": "cd8031d3f7da3700",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 830,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "c357f7cc5dff4e1d",
+        "type": "debug",
+        "z": "cd8031d3f7da3700",
+        "name": "debug 52",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 820,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "8bab6da86f0ab21e",
+        "type": "http request",
+        "z": "cd8031d3f7da3700",
+        "name": "post to mn_cse",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8282/~/mn-cse/mn-name/user_Mary/person/medication",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 660,
+        "y": 260,
+        "wires": [
+            [
+                "c357f7cc5dff4e1d",
+                "967cc8a40fc3ce98"
+            ]
+        ]
+    },
+    {
+        "id": "a59626911e4c7c16",
+        "type": "http in",
+        "z": "cd8031d3f7da3700",
+        "name": "",
+        "url": "/Mary_water",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 240,
+        "y": 520,
+        "wires": [
+            [
+                "d62e3eaf597ce3f1",
+                "1b56f2eeaa91860d"
+            ]
+        ]
+    },
+    {
+        "id": "1b56f2eeaa91860d",
+        "type": "function",
+        "z": "cd8031d3f7da3700",
+        "name": "function 28",
+        "func": "/* 把 query 變成 YYYYMMDD */\nlet y = (msg.req.query.year || \"\").padStart(4, \"0\");\nlet m = (msg.req.query.month || \"\").padStart(2, \"0\");\nlet d = (msg.req.query.day || \"\").padStart(2, \"0\");\nlet lbl = `${y}${m}${d}`;                       // 例 20250507\n\nmsg.method = \"GET\";\nmsg.url = \"http://127.0.0.1:8282\"\n    + \"/~/mn-cse/mn-name/user_Mary/person/water\"\n    + `?fu=1&ty=4&lbl=${lbl}&drt=1`;      // discovery → URI list\nmsg.headers = {\n    \"X-M2M-Origin\": \"admin:admin\",\n    \"Accept\": \"application/json\"                   // 只要回 URI，用 JSON OK\n};\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 520,
+        "wires": [
+            [
+                "d09d28204c9fad64",
+                "bad3ee4faa9d2603"
+            ]
+        ]
+    },
+    {
+        "id": "42d0eaf63971dacc",
+        "type": "debug",
+        "z": "cd8031d3f7da3700",
+        "name": "debug 64",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1360,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "bda27160ca9eb81d",
+        "type": "http response",
+        "z": "cd8031d3f7da3700",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1350,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "d09d28204c9fad64",
+        "type": "http request",
+        "z": "cd8031d3f7da3700",
+        "name": "discovery",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 620,
+        "y": 520,
+        "wires": [
+            [
+                "8b397f39b6bb3906",
+                "2309ed73db86d5a0"
+            ]
+        ]
+    },
+    {
+        "id": "d62e3eaf597ce3f1",
+        "type": "debug",
+        "z": "cd8031d3f7da3700",
+        "name": "debug 65",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "8b397f39b6bb3906",
+        "type": "debug",
+        "z": "cd8031d3f7da3700",
+        "name": "debug 66",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "bad3ee4faa9d2603",
+        "type": "debug",
+        "z": "cd8031d3f7da3700",
+        "name": "debug 67",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "2309ed73db86d5a0",
+        "type": "function",
+        "z": "cd8031d3f7da3700",
+        "name": "function 29",
+        "func": "/* 1. 取 URI 陣列 */\nlet uris = msg.payload[\"m2m:uril\"] || [];\nif (uris.length === 0) {\n    msg.payload = \"no_data\";\n    return msg;\n}\n\n/* 2. 取最後一筆（最新） */\nlet latest = uris[uris.length - 1];            // 例 /mn-cse/.../cin_124\n\n/* 3. 拼成完整 GET URL */\nmsg.method = \"GET\";\nmsg.url = \"http://127.0.0.1:8282/~/\"\n    + latest.replace(/^\\/+/, \"\");      // 去掉前導斜線避免 //~\nmsg.headers = {\n    \"X-M2M-Origin\": \"admin:admin\",\n    \"Accept\": \"application/xml\"                   // ← con 不是 JSON，改用 xml\n};\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 790,
+        "y": 520,
+        "wires": [
+            [
+                "9fe20d70bc701eb5",
+                "a307861f1639e365"
+            ]
+        ]
+    },
+    {
+        "id": "a307861f1639e365",
+        "type": "http request",
+        "z": "cd8031d3f7da3700",
+        "name": "",
+        "method": "use",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 970,
+        "y": 520,
+        "wires": [
+            [
+                "c34993b74c25e328",
+                "ffb00ae9a6b2c1cc"
+            ]
+        ]
+    },
+    {
+        "id": "c34993b74c25e328",
+        "type": "function",
+        "z": "cd8031d3f7da3700",
+        "name": "function 30",
+        "func": "/* 0. 沒資料直接回覆 */\nif (msg.payload === \"no_data\") {\n    msg.payload = \"今天沒有飲水紀錄\";\n    return msg;\n}\n\n/* 1. 取到原始 XML 字串 */\nlet xml = (typeof msg.payload === \"object\")\n    ? (msg.payload[\"m2m:cin\"] || msg.payload).con\n    : msg.payload;\n\n/* 2. 先把 &lt; &gt; &quot; 還原成真正符號 */\nlet unescaped = xml\n    .replace(/&lt;/g, \"<\")\n    .replace(/&gt;/g, \">\")\n    .replace(/&quot;/g, \"\\\"\")\n    .replace(/&amp;/g, \"&\");   // 保險起見也把 &amp; 換掉\n\n/* 3. 用正則抓 name=\"water\" val=\"XXX\" */\nlet m = unescaped.match(/name\\s*=\\s*[\"']water[\"']\\s+val\\s*=\\s*[\"']([^\"']+)[\"']/i);\n\nmsg.payload = m ? (m[1]) : \"未找到飲水量\";\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1150,
+        "y": 520,
+        "wires": [
+            [
+                "bda27160ca9eb81d",
+                "42d0eaf63971dacc"
+            ]
+        ]
+    },
+    {
+        "id": "9fe20d70bc701eb5",
+        "type": "debug",
+        "z": "cd8031d3f7da3700",
+        "name": "debug 68",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1000,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "ffb00ae9a6b2c1cc",
+        "type": "debug",
+        "z": "cd8031d3f7da3700",
+        "name": "debug 69",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1180,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "82294e852b2c7b1d",
+        "type": "http in",
+        "z": "cd8031d3f7da3700",
+        "name": "",
+        "url": "/Mary_medication",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 260,
+        "y": 660,
+        "wires": [
+            [
+                "da365102d628a86e",
+                "38a775aa519843b3"
+            ]
+        ]
+    },
+    {
+        "id": "38a775aa519843b3",
+        "type": "function",
+        "z": "cd8031d3f7da3700",
+        "name": "function 31",
+        "func": "/* 把 query 變成 YYYYMMDD */\nlet y = (msg.req.query.year || \"\").padStart(4, \"0\");\nlet m = (msg.req.query.month || \"\").padStart(2, \"0\");\nlet d = (msg.req.query.day || \"\").padStart(2, \"0\");\nlet lbl = `${y}${m}${d}`;                       // 例 20250507\n\nmsg.method = \"GET\";\nmsg.url = \"http://127.0.0.1:8282\"\n    + \"/~/mn-cse/mn-name/user_Mary/person/medication\"\n    + `?fu=1&ty=4&lbl=${lbl}&drt=1`;      // discovery → URI list\nmsg.headers = {\n    \"X-M2M-Origin\": \"admin:admin\",\n    \"Accept\": \"application/json\"                   // 只要回 URI，用 JSON OK\n};\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 660,
+        "wires": [
+            [
+                "5a16b13c7ccb8f2d",
+                "f7e62f0758f26b03"
+            ]
+        ]
+    },
+    {
+        "id": "4243ba437a49e4c2",
+        "type": "debug",
+        "z": "cd8031d3f7da3700",
+        "name": "debug 70",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1400,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "d84020aa4f447256",
+        "type": "http response",
+        "z": "cd8031d3f7da3700",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1390,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "5a16b13c7ccb8f2d",
+        "type": "http request",
+        "z": "cd8031d3f7da3700",
+        "name": "discovery",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 660,
+        "y": 660,
+        "wires": [
+            [
+                "46cd23766c3d2d62",
+                "0e7fe8f1fa0d1469"
+            ]
+        ]
+    },
+    {
+        "id": "da365102d628a86e",
+        "type": "debug",
+        "z": "cd8031d3f7da3700",
+        "name": "debug 71",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "46cd23766c3d2d62",
+        "type": "debug",
+        "z": "cd8031d3f7da3700",
+        "name": "debug 72",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "f7e62f0758f26b03",
+        "type": "debug",
+        "z": "cd8031d3f7da3700",
+        "name": "debug 73",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "0e7fe8f1fa0d1469",
+        "type": "function",
+        "z": "cd8031d3f7da3700",
+        "name": "function 32",
+        "func": "/* 1. 取 URI 陣列 */\nlet uris = msg.payload[\"m2m:uril\"] || [];\nif (uris.length === 0) {\n    msg.payload = \"no_data\";\n    return msg;\n}\n\n/* 2. 取最後一筆（最新） */\nlet latest = uris[uris.length - 1];            // 例 /mn-cse/.../cin_124\n\n/* 3. 拼成完整 GET URL */\nmsg.method = \"GET\";\nmsg.url = \"http://127.0.0.1:8282/~/\"\n    + latest.replace(/^\\/+/, \"\");      // 去掉前導斜線避免 //~\nmsg.headers = {\n    \"X-M2M-Origin\": \"admin:admin\",\n    \"Accept\": \"application/xml\"                   // ← con 不是 JSON，改用 xml\n};\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 830,
+        "y": 660,
+        "wires": [
+            [
+                "e3d399eda2081cbd",
+                "f21f89dba56cec1c"
+            ]
+        ]
+    },
+    {
+        "id": "f21f89dba56cec1c",
+        "type": "http request",
+        "z": "cd8031d3f7da3700",
+        "name": "",
+        "method": "use",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1010,
+        "y": 660,
+        "wires": [
+            [
+                "65c5f6b426194779",
+                "e6cce0f59f8903c7"
+            ]
+        ]
+    },
+    {
+        "id": "65c5f6b426194779",
+        "type": "function",
+        "z": "cd8031d3f7da3700",
+        "name": "function 33",
+        "func": "/* 0. 沒資料直接回覆 */\nif (msg.payload === \"no_data\") {\n    msg.payload = \"今天沒有吃藥紀錄\";\n    return msg;\n}\n\n/* 1. 取到原始 XML 字串 */\nlet xml = (typeof msg.payload === \"object\")\n    ? (msg.payload[\"m2m:cin\"] || msg.payload).con\n    : msg.payload;\n\n/* 2. 先把 &lt; &gt; &quot; 還原成真正符號 */\nlet unescaped = xml\n    .replace(/&lt;/g, \"<\")\n    .replace(/&gt;/g, \">\")\n    .replace(/&quot;/g, \"\\\"\")\n    .replace(/&amp;/g, \"&\");   // 保險起見也把 &amp; 換掉\n\n/* 3. 用正則抓 name=\"water\" val=\"XXX\" */\nlet m = unescaped.match(/name\\s*=\\s*[\"']medication[\"']\\s+val\\s*=\\s*[\"']([^\"']+)[\"']/i);\n\nmsg.payload = m ? (m[1]) : \"未找到吃藥紀錄\";\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1190,
+        "y": 660,
+        "wires": [
+            [
+                "d84020aa4f447256",
+                "4243ba437a49e4c2"
+            ]
+        ]
+    },
+    {
+        "id": "e3d399eda2081cbd",
+        "type": "debug",
+        "z": "cd8031d3f7da3700",
+        "name": "debug 74",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1040,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "e6cce0f59f8903c7",
+        "type": "debug",
+        "z": "cd8031d3f7da3700",
+        "name": "debug 75",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1220,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "8ef08d26b263a523",
+        "type": "http in",
+        "z": "cd8031d3f7da3700",
+        "name": "",
+        "url": "/create_ac_Mary",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 260,
+        "y": 100,
+        "wires": [
+            [
+                "8caa83bf53364eb6"
+            ]
+        ]
+    },
+    {
+        "id": "8caa83bf53364eb6",
+        "type": "function",
+        "z": "cd8031d3f7da3700",
+        "name": "function 34",
+        "func": "/*jshint multistr: true */\nvar label = msg.payload.year + msg.payload.month + msg.payload.day;\n\nvar data = '<m2m:cin xmlns:m2m=\"http://www.onem2m.org/xml/protocols\">\\\n\t<cnf>message</cnf>\\\n\t<lbl>' + label + '</lbl>\\\n\t<con>\\\n\t  &lt;obj&gt;\\\n\t\t&lt;str name=&quot;year&quot; val=&quot;'+ msg.payload.year + '&quot;/&gt;\\\n\t\t&lt;str name=&quot;month&quot; val=&quot;'+ msg.payload.month+ '&quot;/&gt;\\\n\t\t&lt;str name=&quot;day&quot; val=&quot;'+ msg.payload.day + '&quot;/&gt;\\\n\t\t&lt;str name=&quot;part&quot; val=&quot;'+ msg.payload.part + '&quot;/&gt;\\\n\t\t&lt;str name=&quot;user&quot; val=&quot;'+ msg.payload.user + '&quot;/&gt;\\\n\t  &lt;/obj&gt;\\\n\t</con>\\\n</m2m:cin>';\n\nmsg.payload = data;\nmsg.headers = {};\nmsg.headers['X-M2M-Origin'] = 'admin:admin';\nmsg.headers['Content-Type'] = 'application/xml;ty=4';\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 100,
+        "wires": [
+            [
+                "dd36abe7a5822558"
+            ]
+        ]
+    },
+    {
+        "id": "f827eb7069483103",
+        "type": "http response",
+        "z": "cd8031d3f7da3700",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 830,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "36c7493e25da0395",
+        "type": "debug",
+        "z": "cd8031d3f7da3700",
+        "name": "debug 76",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 820,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "dd36abe7a5822558",
+        "type": "http request",
+        "z": "cd8031d3f7da3700",
+        "name": "post to mn_cse",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8282/~/mn-cse/mn-name/user_Mary/activity_calendar",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 640,
+        "y": 100,
+        "wires": [
+            [
+                "36c7493e25da0395",
+                "f827eb7069483103"
+            ]
+        ]
+    },
+    {
+        "id": "23824a91a2807696",
+        "type": "http in",
+        "z": "cd8031d3f7da3700",
+        "name": "",
+        "url": "/create_calories_Mary",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 240,
+        "y": 360,
+        "wires": [
+            [
+                "19a4f6457aecd7bc"
+            ]
+        ]
+    },
+    {
+        "id": "19a4f6457aecd7bc",
+        "type": "function",
+        "z": "cd8031d3f7da3700",
+        "name": "function 43",
+        "func": "/*jshint multistr: true */\nvar label = msg.payload.year + msg.payload.month + msg.payload.day;\n\nvar data = '<m2m:cin xmlns:m2m=\"http://www.onem2m.org/xml/protocols\">\\\n\t<cnf>message</cnf>\\\n\t<lbl>' + label + '</lbl>\\\n\t<con>\\\n\t  &lt;obj&gt;\\\n\t\t&lt;str name=&quot;year&quot; val=&quot;'+ msg.payload.year + '&quot;/&gt;\\\n\t\t&lt;str name=&quot;month&quot; val=&quot;'+ msg.payload.month+ '&quot;/&gt;\\\n\t\t&lt;str name=&quot;day&quot; val=&quot;'+ msg.payload.day + '&quot;/&gt;\\\n\t\t&lt;str name=&quot;calories&quot; val=&quot;'+ msg.payload.calories + '&quot;/&gt;\\\n\t  &lt;/obj&gt;\\\n\t</con>\\\n</m2m:cin>';\n\nmsg.payload = data;\nmsg.headers = {};\nmsg.headers['X-M2M-Origin'] = 'admin:admin';\nmsg.headers['Content-Type'] = 'application/xml;ty=4';\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 360,
+        "wires": [
+            [
+                "9e84326e00b7622e"
+            ]
+        ]
+    },
+    {
+        "id": "78da0441b049015c",
+        "type": "http response",
+        "z": "cd8031d3f7da3700",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 830,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "e3adf3c20a52cd4a",
+        "type": "debug",
+        "z": "cd8031d3f7da3700",
+        "name": "debug 93",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 820,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "9e84326e00b7622e",
+        "type": "http request",
+        "z": "cd8031d3f7da3700",
+        "name": "post to mn_cse",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8282/~/mn-cse/mn-name/user_Mary/person/calories",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 640,
+        "y": 360,
+        "wires": [
+            [
+                "e3adf3c20a52cd4a",
+                "78da0441b049015c"
+            ]
+        ]
+    },
+    {
+        "id": "f97fa8cad7940167",
+        "type": "http in",
+        "z": "cd8031d3f7da3700",
+        "name": "",
+        "url": "/Mary_calories",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 230,
+        "y": 780,
+        "wires": [
+            [
+                "b03c8468ec3cb95e",
+                "3d34d77e1d2456a5"
+            ]
+        ]
+    },
+    {
+        "id": "3d34d77e1d2456a5",
+        "type": "function",
+        "z": "cd8031d3f7da3700",
+        "name": "function 44",
+        "func": "/* 把 query 變成 YYYYMMDD */\nlet y = (msg.req.query.year || \"\").padStart(4, \"0\");\nlet m = (msg.req.query.month || \"\").padStart(2, \"0\");\nlet d = (msg.req.query.day || \"\").padStart(2, \"0\");\nlet lbl = `${y}${m}${d}`;                       // 例 20250507\n\nmsg.method = \"GET\";\nmsg.url = \"http://127.0.0.1:8282\"\n    + \"/~/mn-cse/mn-name/user_Mary/person/calories\"\n    + `?fu=1&ty=4&lbl=${lbl}&drt=1`;      // discovery → URI list\nmsg.headers = {\n    \"X-M2M-Origin\": \"admin:admin\",\n    \"Accept\": \"application/json\"                   // 只要回 URI，用 JSON OK\n};\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 780,
+        "wires": [
+            [
+                "f8e08ee88f958a6d",
+                "f6660e85bf03bc84"
+            ]
+        ]
+    },
+    {
+        "id": "f87618e2d3df6830",
+        "type": "debug",
+        "z": "cd8031d3f7da3700",
+        "name": "debug 94",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1360,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "26eb3decc8bdd19d",
+        "type": "http response",
+        "z": "cd8031d3f7da3700",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1350,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "f8e08ee88f958a6d",
+        "type": "http request",
+        "z": "cd8031d3f7da3700",
+        "name": "discovery",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 620,
+        "y": 780,
+        "wires": [
+            [
+                "79106ecbef1dc615",
+                "ae3d706e2c6a4952"
+            ]
+        ]
+    },
+    {
+        "id": "b03c8468ec3cb95e",
+        "type": "debug",
+        "z": "cd8031d3f7da3700",
+        "name": "debug 95",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "79106ecbef1dc615",
+        "type": "debug",
+        "z": "cd8031d3f7da3700",
+        "name": "debug 96",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "f6660e85bf03bc84",
+        "type": "debug",
+        "z": "cd8031d3f7da3700",
+        "name": "debug 97",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "ae3d706e2c6a4952",
+        "type": "function",
+        "z": "cd8031d3f7da3700",
+        "name": "function 45",
+        "func": "/* 1. 取 URI 陣列 */\nlet uris = msg.payload[\"m2m:uril\"] || [];\nif (uris.length === 0) {\n    msg.payload = \"no_data\";\n    return msg;\n}\n\n/* 2. 取最後一筆（最新） */\nlet latest = uris[uris.length - 1];            // 例 /mn-cse/.../cin_124\n\n/* 3. 拼成完整 GET URL */\nmsg.method = \"GET\";\nmsg.url = \"http://127.0.0.1:8282/~/\"\n    + latest.replace(/^\\/+/, \"\");      // 去掉前導斜線避免 //~\nmsg.headers = {\n    \"X-M2M-Origin\": \"admin:admin\",\n    \"Accept\": \"application/xml\"                   // ← con 不是 JSON，改用 xml\n};\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 790,
+        "y": 780,
+        "wires": [
+            [
+                "e9630ce18863a4e1",
+                "f3b418f32e62fa5f"
+            ]
+        ]
+    },
+    {
+        "id": "f3b418f32e62fa5f",
+        "type": "http request",
+        "z": "cd8031d3f7da3700",
+        "name": "",
+        "method": "use",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 970,
+        "y": 780,
+        "wires": [
+            [
+                "2df64191841f214a",
+                "bcef18343d4a12ba"
+            ]
+        ]
+    },
+    {
+        "id": "2df64191841f214a",
+        "type": "function",
+        "z": "cd8031d3f7da3700",
+        "name": "function 46",
+        "func": "/* 0. 沒資料直接回覆 */\nif (msg.payload === \"no_data\") {\n    msg.payload = \"今天沒有calories紀錄\";\n    return msg;\n}\n\n/* 1. 取到原始 XML 字串 */\nlet xml = (typeof msg.payload === \"object\")\n    ? (msg.payload[\"m2m:cin\"] || msg.payload).con\n    : msg.payload;\n\n/* 2. 先把 &lt; &gt; &quot; 還原成真正符號 */\nlet unescaped = xml\n    .replace(/&lt;/g, \"<\")\n    .replace(/&gt;/g, \">\")\n    .replace(/&quot;/g, \"\\\"\")\n    .replace(/&amp;/g, \"&\");   // 保險起見也把 &amp; 換掉\n\n/* 3. 用正則抓 name=\"water\" val=\"XXX\" */\nlet m = unescaped.match(/name\\s*=\\s*[\"']calories[\"']\\s+val\\s*=\\s*[\"']([^\"']+)[\"']/i);\n\nmsg.payload = m ? (m[1]) : \"未找到calories紀錄\";\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1150,
+        "y": 780,
+        "wires": [
+            [
+                "26eb3decc8bdd19d",
+                "f87618e2d3df6830"
+            ]
+        ]
+    },
+    {
+        "id": "e9630ce18863a4e1",
+        "type": "debug",
+        "z": "cd8031d3f7da3700",
+        "name": "debug 98",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1000,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "bcef18343d4a12ba",
+        "type": "debug",
+        "z": "cd8031d3f7da3700",
+        "name": "debug 99",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1180,
+        "y": 720,
+        "wires": []
+    }
+]
