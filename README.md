@@ -46,6 +46,6 @@ adb install -r ../final_project.apk   # 或手動安裝
 
 ```
 
-## 執行步驟
+## 備註
 
 詳細可以查看內建的slide內容，有更完整的專案說明
