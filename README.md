@@ -11,7 +11,7 @@
 > 🔎 **目標**：最小化手動操作 ── 只需四條指令即可完成環境建置並開始打卡。
 
 ## 資料夾結構
-```text
+```
 .
 ├── node-red/           # Node-RED flows（flow.json, flow-2.json）
 ├── app_proposal.pptx   # 提案簡報
@@ -21,6 +21,11 @@
 ├── init_in.sh          # 建立 in-cse 容器
 ├── postman.json        # 建立 mn ➜ in 訂閱
 └── README.md           # 本文件
+
+```
+## 執行步驟
+
+```
 
 # 1️⃣ 建立資源樹（mn / in）
 bash init_mn.sh   # mn-cse：建立 user_X/person & activity_calendar
@@ -38,3 +43,5 @@ node-red -u .      # 以當前資料夾作為 userDir
 # 4️⃣ 安裝並啟動 Android App
 adb install -r ../final_project.apk   # 或手動安裝
 # App 設定頁輸入 mn-cse IP，立即開始打卡
+
+```
